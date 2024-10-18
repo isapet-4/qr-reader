@@ -2,16 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  let code = "";
+
+
+let code = "";
 
 document.addEventListener('keypress', e => {
-
   if (e.key === "Enter") {
             document.getElementById("third").innerHTML = code
+            code = "";
     } else {
         code += e.key;             
     }
 });
+
 
   return (
     <div className="App">
@@ -23,6 +26,7 @@ document.addEventListener('keypress', e => {
         first: <div id="first" ></div>
         second: <div id="second"></div>
         third: <div id="third"></div>
+        div: <div>{code}</div>
 
         <a
           className="App-link"
