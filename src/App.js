@@ -2,39 +2,20 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  on_scanner() // init function
-let testValue = ''
-let testValue1= ''
-  function on_scanner() {
-      let is_event = false; // for check just one event declaration
-      let input = document.getElementById("scanner");
-      input?.addEventListener("focus", function () {
-          if (!is_event) {
-              is_event = true;
-              input.addEventListener("keypress", function (e) {
-                  setTimeout(function () {
-                      if (e.key === 13) {
-                          testValue= input.value
-                          scanner(input.value); // use value as you need
-                          input.select();
-                      }
-                  }, 500)
-              })
-          }
-      });
-      document.addEventListener("keypress", function (e) {
-          if (e.target.tagName !== "INPUT") {
-              input.focus();
-          }
-      });
-  }
-  
-  function scanner(value) {
-      if (value === '') return;
-      console.log(value)
-      testValue1 = value
-  }
-
+  document.addEventListener('keydown', (ev) => {
+    if (ev.ctrlKey || ev.altKey) return;  // Ignore command-like keys
+    if (ev.key === 'Enter') {
+      // ...submit the content here...
+    } else if (ev.key === 'Space') { // I think IE needs this
+      document.getElementById('scanner').value += ev.key;
+      document.getElementById('first').value += ' ';
+      document.getElementById('second').value += ' ';
+    } else if (ev.key.length === 1) { // A character not a key like F12 or Backspace
+      document.getElementById('scanner').value += ev.key;
+      document.getElementById('first').value += ev.key;
+      document.getElementById('second').value += ev.key;
+    }
+  });
   return (
     <div className="App">
       <header className="App-header">
@@ -50,8 +31,8 @@ let testValue1= ''
           <h2>code: </h2>
           <input defaultValue={code}/> */}
         <input type="text" id="scanner" placeholder="scanner"></input>
-        <p>code: {testValue}</p>
-        <p>code 1 {testValue1}</p>
+        <p id="first">code: </p>
+        <p id="second">code 1 </p>
 
 
         <a
