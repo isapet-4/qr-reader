@@ -6,17 +6,17 @@ function App() {
 
 let code = "";
 
-document.addEventListener('keypress', e => {
+document.addEventListener('keydown', e => {
   //usually scanners throw an 'Enter' key at the end of read
-  if (e.key === "Enter") {
-    
+  document.getElementById("first").innerHTML = e.key
+  document.getElementById("second").innerHTML = e.code
+  if (e.code === "Enter") {
             /// code ready to use          
-            document.getElementById("second").innerHTML = code
+            document.getElementById("third").innerHTML = code
       
             code = "";
     } else {
-        code += e.key; //while this is not an 'enter' it stores the every key            
-        document.getElementById("first").innerHTML = code
+        code += e.key;             
     }
 
 
