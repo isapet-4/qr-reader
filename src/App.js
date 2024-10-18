@@ -1,20 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import {BarcodeScanner} from "@itexperts/barcode-scanner";
 
 function App() {
-  document.addEventListener('keydown', (ev) => {
-    if (ev.ctrlKey || ev.altKey) return;  // Ignore command-like keys
-    if (ev.key === 13) {
-      // ...submit the content here...
-    } else if (ev.key === 'Space') { // I think IE needs this
-      document.getElementById('scanner').value += ev.key;
-      document.getElementById('first').innerHTML += ' ';
-      document.getElementById('second').innerHTML += ' ';
-    } else if (ev.key.length === 1) { // A character not a key like F12 or Backspace
-      document.getElementById('scanner').value += ev.key;
-      document.getElementById('first').innerHTML += ev.key;
-      document.getElementById('second').innerHTML += ev.key;
-    }
+  let options = {
+    timeOut: 130,
+    characterCount: 13
+  }
+  let barcode = ''
+  let barcodeScanner = new BarcodeScanner(options);
+  barcodeScanner.addEventListener('scan', function(e){
+      barcode = e.detail;
+      console.log(barcode);
   });
   return (
     <div className="App">
@@ -30,10 +27,9 @@ function App() {
 
           <h2>code: </h2>
           <input defaultValue={code}/> */}
-        <input type="text" id="scanner" placeholder="scanner"></input>
+        <input type="text" id="scanner" placeholder="scanner" defaultValue={barcode}></input>
         <div id="first"></div>
-        <div id="second"></div>
-
+        <div id="second">barcode: {barcode}</div>
 
         <a
           className="App-link"
