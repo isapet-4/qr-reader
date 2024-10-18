@@ -16,7 +16,7 @@ let reading = false;
 
 document.addEventListener('keypress', e => {
   //usually scanners throw an 'Enter' key at the end of read
-   if (e.key === 13) {
+   if (e.key === "ENTER") {
     document.getElementById("third").innerHTML = code
           if(code.length > 25) {
             console.log(code);
