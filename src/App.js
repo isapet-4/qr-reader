@@ -17,14 +17,15 @@ let reading = false;
 document.addEventListener('keypress', e => {
   //usually scanners throw an 'Enter' key at the end of read
    if (e.key === 13) {
+    
           if(code.length > 25) {
             console.log(code);
             /// code ready to use                
-            document.getElementById("first").innerHTML = code
             code = "";
          }
     } else {
         code += e.key; //while this is not an 'enter' it stores the every key            
+        document.getElementById("first").innerHTML = code
         
 
     }
