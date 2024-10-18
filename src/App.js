@@ -3,25 +3,15 @@ import './App.css';
 
 function App() {
 
+document.addEventListener('keypress', e => {
+  let code = "";
 
-let code = "";
-
-document.addEventListener('keydown', e => {
-  //usually scanners throw an 'Enter' key at the end of read
-  document.getElementById("first").innerHTML = e.key
-  document.getElementById("second").innerHTML = e.code
   if (e.key === "Enter") {
-            /// code ready to use          
             document.getElementById("third").innerHTML = code
-      
-            code = "";
     } else {
         code += e.key;             
     }
-
-
 });
-
 
   return (
     <div className="App">
@@ -33,7 +23,6 @@ document.addEventListener('keydown', e => {
         first: <div id="first" ></div>
         second: <div id="second"></div>
         third: <div id="third"></div>
-        <div>{code}</div>
 
         <a
           className="App-link"
