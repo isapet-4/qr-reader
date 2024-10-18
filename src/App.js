@@ -17,17 +17,17 @@ let reading = false;
 document.addEventListener('keypress', e => {
   //usually scanners throw an 'Enter' key at the end of read
    if (e.key === 13) {
-    
+    document.getElementById("third").innerHTML = code
           if(code.length > 25) {
             console.log(code);
-            /// code ready to use                
+            /// code ready to use          
+            document.getElementById("second").innerHTML = code
+      
             code = "";
          }
     } else {
         code += e.key; //while this is not an 'enter' it stores the every key            
         document.getElementById("first").innerHTML = code
-        
-
     }
 
     //run a timeout of 200ms at the first read and clear everything
@@ -49,15 +49,11 @@ document.addEventListener('keypress', e => {
           Edit <code>src/App.js</code> and save to reload.
           </p>
           <br/>
-          {/* <h2>UPC is: </h2>
-          <input defaultValue={UPC}/>
-          <p>upc: {UPC}</p>
-
-          <h2>code: </h2>
-          <input defaultValue={code}/> */}
+         
         <input type="text" id="scanner" placeholder="scanner"></input>
         <div id="first"></div>
         <div id="second"></div>
+        <div id="third"></div>
         <div>{code}</div>
 
         <a
