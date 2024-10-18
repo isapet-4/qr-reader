@@ -9,10 +9,17 @@ let reading = false;
 
 document.addEventListener('keypress', e => {
   //usually scanners throw an 'Enter' key at the end of read
-   if (e.key === "ENTER") {
-            document.getElementById("first").innerHTML = code      
+  document.getElementById("third").innerHTML = e.key
+  if (e.key === "ENTER") {
+    
+            console.log(code);
+            /// code ready to use          
+            document.getElementById("second").innerHTML = code
+      
+            code = "";
     } else {
         code += e.key; //while this is not an 'enter' it stores the every key            
+        document.getElementById("first").innerHTML = code
     }
 
     //run a timeout of 200ms at the first read and clear everything
