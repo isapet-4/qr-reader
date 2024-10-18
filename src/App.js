@@ -10,6 +10,8 @@ function App() {
   let barcode = ''
   let barcodeScanner = new BarcodeScanner(options);
   barcodeScanner.addEventListener('scan', function(e){
+      document.getElementById("second").innerHTML = e.detail
+      alert(e.detail)
       barcode = e.detail;
       console.log(barcode);
   });
