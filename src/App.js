@@ -44,7 +44,7 @@ function App() {
         first: <div id="first" ></div>
         second: <div id="second"></div>
         third: <div id="third"></div>
-        {products[0].ProductId}
+        {products[0]?.ProductId}
         {products.map((product) => {
           return <p>{product.ProductId}</p>}
           )}
