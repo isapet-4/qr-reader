@@ -2,30 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-let code = "";
-let reading = false;
+  let UPC = '';
+    document.addEventListener("keydown", function(e) {
+        const textInput = e.key || String.fromCharCode(e.key);
+        const targetName = e.target.localName;
+        let newUPC = '';
+        if (textInput && targetName !== 'input'){
+            newUPC = UPC+textInput;
 
-document.addEventListener('keypress', e => {
-  //usually scanners throw an 'Enter' key at the end of read
-   if (e.key === 13) {
-          if(code.length > 10) {
-            console.log(code);
-            /// code ready to use                
-            code = "";
-         }
-    } else {
-        code += e.key; //while this is not an 'enter' it stores the every key            
-    }
-
-    //run a timeout of 200ms at the first read and clear everything
-    if(!reading) {
-        reading = true;
-        setTimeout(() => {
-            code = "";
-            reading = false;
-        }, 200);  //200 works fine for me but you can adjust it
-    }
-});
+          if (newUPC.length >= 6) {
+            console.log('barcode scanned:  ', newUPC);
+          } 
+       }
+    });
 
   return (
     <div className="App">
@@ -33,7 +22,7 @@ document.addEventListener('keypress', e => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          code is: {code}
+          code is: <input>{UPC}</input>
         </p>
         <a
           className="App-link"
