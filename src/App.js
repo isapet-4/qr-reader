@@ -10,7 +10,7 @@ document.addEventListener('keydown', e => {
   //usually scanners throw an 'Enter' key at the end of read
   document.getElementById("first").innerHTML = e.key
   document.getElementById("second").innerHTML = e.code
-  if (e.code === "Enter") {
+  if (e.key === "Enter") {
             /// code ready to use          
             document.getElementById("third").innerHTML = code
       
