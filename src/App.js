@@ -1,20 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react"
+
+
 
 function App() {
 
+  const [products, setProducts] = useState([])
 
-let code = "";
+  let keyCodes = ""
 
-document.addEventListener('keypress', e => {
-  if (e.key === "Enter") {
-            document.getElementById("third").innerHTML = code
-            code = "";
+  document.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      console.log(keyCodes)
+      setProduct(keyCodes)
+      keyCodes = ""
     } else {
-        code += e.key;             
+      keyCodes += e.key
     }
-});
+  })
 
+  const setProduct = (value) => {
+    const [CustomerNumber, ProductId, ProductName, StorageName, Quantity] =
+      value.trim().split("$")
+
+    const product = {
+      CustomerNumber: Number(CustomerNumber),
+      ProductId,
+      ProductName,
+      StorageName,
+      Quantity: Number(Quantity),
+    }
+    setProducts((previous) => [...previous, product])
+  }
 
   return (
     <div className="App">
@@ -26,8 +44,9 @@ document.addEventListener('keypress', e => {
         first: <div id="first" ></div>
         second: <div id="second"></div>
         third: <div id="third"></div>
-        div: <div>{code}</div>
-
+        {products.map((product) => {
+          return <p>{product.ProductId}</p>}
+          )}
         <a
           className="App-link"
           href="https://reactjs.org"
