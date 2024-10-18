@@ -2,9 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let code = "";
 
 document.addEventListener('keypress', e => {
-  let code = "";
 
   if (e.key === "Enter") {
             document.getElementById("third").innerHTML = code
