@@ -19,23 +19,24 @@ document.addEventListener('keypress', e => {
    if (e.key === 13) {
           if(code.length > 25) {
             console.log(code);
-            /// code ready to use                
-            code = "";
+            /// code ready to use   
+            document.getElementById("first").innerHTML = code
+             
+            // code = "";
          }
     } else {
         code += e.key; //while this is not an 'enter' it stores the every key            
-        document.getElementById("first").innerHTML = code
 
     }
 
     //run a timeout of 200ms at the first read and clear everything
-    if(!reading) {
-        reading = true;
-        setTimeout(() => {
-            code = "";
-            reading = false;
-        }, 200);  //200 works fine for me but you can adjust it
-    }
+    // if(!reading) {
+    //     reading = true;
+    //     setTimeout(() => {
+    //         code = "";
+    //         reading = false;
+    //     }, 200);  //200 works fine for me but you can adjust it
+    // }
 });
 
 
