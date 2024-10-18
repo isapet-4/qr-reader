@@ -4,16 +4,16 @@ import './App.css';
 function App() {
   document.addEventListener('keydown', (ev) => {
     if (ev.ctrlKey || ev.altKey) return;  // Ignore command-like keys
-    if (ev.key === 'Enter') {
+    if (ev.key === 13) {
       // ...submit the content here...
     } else if (ev.key === 'Space') { // I think IE needs this
       document.getElementById('scanner').value += ev.key;
-      document.getElementById('first').value += ' ';
-      document.getElementById('second').value += ' ';
+      document.getElementById('first').innerHTML += ' ';
+      document.getElementById('second').innerHTML += ' ';
     } else if (ev.key.length === 1) { // A character not a key like F12 or Backspace
       document.getElementById('scanner').value += ev.key;
-      document.getElementById('first').value += ev.key;
-      document.getElementById('second').value += ev.key;
+      document.getElementById('first').innerHTML += ev.key;
+      document.getElementById('second').innerHTML += ev.key;
     }
   });
   return (
@@ -31,8 +31,8 @@ function App() {
           <h2>code: </h2>
           <input defaultValue={code}/> */}
         <input type="text" id="scanner" placeholder="scanner"></input>
-        <p id="first">code: </p>
-        <p id="second">code 1 </p>
+        <div id="first"></div>
+        <div id="second"></div>
 
 
         <a
