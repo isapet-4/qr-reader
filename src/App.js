@@ -10,7 +10,7 @@ let reading = false;
 document.addEventListener('keypress', e => {
   //usually scanners throw an 'Enter' key at the end of read
   document.getElementById("third").innerHTML = e.key
-  if (e.key === "ENTER") {
+  if (e.key === "Enter") {
     
             console.log(code);
             /// code ready to use          
