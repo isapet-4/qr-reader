@@ -1,20 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import {BarcodeScanner} from "@itexperts/barcode-scanner";
 
 function App() {
-  let options = {
-    timeOut: 130,
-    characterCount: 13
-  }
-  let barcode = ''
-  let barcodeScanner = new BarcodeScanner(options);
-  barcodeScanner.addEventListener('scan', function(e){
-      document.getElementById("second").innerHTML = e.detail
-      alert(e.detail)
-      barcode = e.detail;
-      console.log(barcode);
-  });
+  document.addEventListener('textInput', function (e){
+    if(e.data.length >= 6){
+        console.log('IR scan textInput', e.data);
+        document.getElementById("second").innerHTML = e.data
+        document.getElementById("scanner").value = e.data
+        e.preventDefault();
+    }
+});
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -29,9 +26,9 @@ function App() {
 
           <h2>code: </h2>
           <input defaultValue={code}/> */}
-        <input type="text" id="scanner" placeholder="scanner" defaultValue={barcode}></input>
+        <input type="text" id="scanner" placeholder="scanner"></input>
         <div id="first"></div>
-        <div id="second">barcode: {barcode}</div>
+        <div id="second"></div>
 
         <a
           className="App-link"
