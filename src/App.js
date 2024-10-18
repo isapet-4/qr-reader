@@ -24,7 +24,7 @@ document.addEventListener('keypress', e => {
          }
     } else {
         code += e.key; //while this is not an 'enter' it stores the every key            
-        document.getElementById("first").innerHTML = e.key
+        document.getElementById("first").innerHTML = code
 
     }
 
