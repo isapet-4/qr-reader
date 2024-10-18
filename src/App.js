@@ -5,7 +5,6 @@ function App() {
 
 
 let code = "";
-let reading = false;
 
 document.addEventListener('keypress', e => {
   //usually scanners throw an 'Enter' key at the end of read
@@ -17,16 +16,10 @@ document.addEventListener('keypress', e => {
             code = "";
     } else {
         code += e.key; //while this is not an 'enter' it stores the every key            
+        document.getElementById("first").innerHTML = code
     }
 
-    //run a timeout of 200ms at the first read and clear everything
-    if(!reading) {
-        reading = true;
-        setTimeout(() => {
-            code = "";
-            reading = false;
-        }, 200);  //200 works fine for me but you can adjust it
-    }
+
 });
 
 
