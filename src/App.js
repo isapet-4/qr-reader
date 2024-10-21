@@ -46,7 +46,17 @@ function App() {
         first: <div id="first" ></div>
         second: <div id="second"></div>
         third: <div id="third"></div>
-         {Object.entries(groupedItems).map(([key, group]) => (
+  
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        Test:
+        {Object.entries(groupedItems).map(([key, group]) => (
           <div key={key} >
             {group.map((item, itemKey) => (
               <div key={itemKey}>
@@ -66,15 +76,6 @@ function App() {
             ))}
             </div>
          ))}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button onClick={() => setProduct("1$333$te$dad$222")}>Click</button>
       </header>
     </div>
   );
