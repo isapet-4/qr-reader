@@ -11,8 +11,6 @@ function App() {
 
   let keyCodes = ""
   document.addEventListener("keypress", (e) => {
-    console.log('keypress: ', e.key)
-    document.getElementById("third").innerHTML = e.key
     if (e.key === "Enter") {
       document.getElementById("first").innerHTML = keyCodes
       setProduct(keyCodes)
@@ -23,27 +21,8 @@ function App() {
   })
 
   const setProduct = (value) => {
-    console.log('log', value)
-    
-    if(value.includes("$")){
-      console.log('here')
-      const [CustomerNumber, ProductId, ProductName, StorageName, Quantity] =
-      value.trim().split("$")
-      
-    const product = {
-      CustomerNumber: Number(CustomerNumber),
-      ProductId,
-      ProductName,
-      StorageName,
-      Quantity: Number(Quantity),
-    }
-    console.log('product: ', product)
-    return setProducts((previous) => [...previous, product])
-    }
-
-    console.log('not here')
     const [CustomerNumber, ProductId, ProductName, StorageName, Quantity] =
-      value.trim()
+    value.trim().split("$")
       
     const product = {
       CustomerNumber: Number(CustomerNumber),
@@ -52,9 +31,7 @@ function App() {
       StorageName,
       Quantity: Number(Quantity),
     }
-    console.log('product: ', product)
     setProducts((previous) => [...previous, product])
-    
   }
 
   const groupedItems = groupBy(products, "CustomerNumber")
