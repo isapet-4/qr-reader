@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from "react"
+import { groupBy } from "lodash"
 
 
 
@@ -9,10 +10,8 @@ function App() {
   const [products, setProducts] = useState([])
 
   let keyCodes = ""
-
   document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-      console.log(keyCodes)
       setProduct(keyCodes)
       keyCodes = ""
     } else {
@@ -33,6 +32,8 @@ function App() {
     }
     setProducts((previous) => [...previous, product])
   }
+  
+  const groupedItems = groupBy(products, "CustomerNumber")
 
   return (
     <div className="App">
@@ -44,10 +45,26 @@ function App() {
         first: <div id="first" ></div>
         second: <div id="second"></div>
         third: <div id="third"></div>
-        {products[0]?.ProductId}
-        {products.map((product) => {
-          return <p>{product.ProductId}</p>}
-          )}
+         {Object.entries(groupedItems).map(([key, group]) => (
+          <div key={key} >
+            {group.map((item, itemKey) => (
+              <div key={itemKey}>
+                <div>
+                  {item.ProductId}
+                </div>
+                <div>
+                  {item.ProductName}
+                </div>
+                <div>
+                  {item.Quantity}
+                </div>
+                <div>
+                  {item.StorageName}
+                </div>
+              </div>
+            ))}
+            </div>
+         ))}
         <a
           className="App-link"
           href="https://reactjs.org"
