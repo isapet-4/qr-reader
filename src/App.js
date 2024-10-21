@@ -11,8 +11,10 @@ function App() {
 
   let keyCodes = ""
   document.addEventListener("keypress", (e) => {
+    console.log('keypress: ', e.key)
     if (e.key === "Enter") {
       setProduct(keyCodes)
+      document.getElementById("first").innerHTML = keyCodes
       keyCodes = ""
     } else {
       keyCodes += e.key
@@ -20,8 +22,10 @@ function App() {
   })
 
   const setProduct = (value) => {
+    console.log('log', value)
     const [CustomerNumber, ProductId, ProductName, StorageName, Quantity] =
       value.trim().split("$")
+      
 
     const product = {
       CustomerNumber: Number(CustomerNumber),
@@ -30,9 +34,10 @@ function App() {
       StorageName,
       Quantity: Number(Quantity),
     }
+    console.log('product: ', product)
     setProducts((previous) => [...previous, product])
   }
-  
+
   const groupedItems = groupBy(products, "CustomerNumber")
 
   return (
@@ -73,6 +78,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => setProduct("1$333$te$dad$222")}>Click</button>
       </header>
     </div>
   );
