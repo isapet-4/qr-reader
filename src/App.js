@@ -12,6 +12,7 @@ function App() {
   let keyCodes = ""
   document.addEventListener("keypress", (e) => {
     console.log('keypress: ', e.key)
+    document.getElementById("third").innerHTML = e.key
     if (e.key === "Enter") {
       setProduct(keyCodes)
       document.getElementById("first").innerHTML = keyCodes
